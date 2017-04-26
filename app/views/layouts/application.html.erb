@@ -19,13 +19,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <div id="flash">
-          <% flash.each do |key, value| %>
-            <div class="flash <%= key %>"><%= value %></div>
-          <% end %>
-        </div>
-      </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
           Signed in as: <%= current_user.email %>
@@ -41,7 +35,7 @@
 
     <div id="flash">
       <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
+        <div role="alert" class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
     </div>
 
