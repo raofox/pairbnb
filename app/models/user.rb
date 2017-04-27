@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  include Clearance::User
+  enum gender: [:undefined, :male, :female]
+
+
 end
