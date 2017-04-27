@@ -26,6 +26,7 @@
           <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn btn-primary" %>
         <% else %>
           <%= link_to 'Sign in', sign_in_path %>
+          <%= link_to "Sign in with Facebook", "/auth/facebook" %>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

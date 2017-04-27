@@ -6,6 +6,10 @@ git_source(:github) do |repo_name|
 end
 
 
+# Use omniauth
+gem "omniauth"
+# USe omniauth-facebook
+gem "omniauth-facebook"
 # Use figaro gem configuration using ENV and a single YAML file (privacy protection)
 gem "figaro"
 # User authetication gem
