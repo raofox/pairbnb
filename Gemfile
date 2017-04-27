@@ -6,8 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 
-
-
+# Use figaro gem configuration using ENV and a single YAML file (privacy protection)
+gem "figaro"
 # User authetication gem
 gem "clearance"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
