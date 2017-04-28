@@ -6,12 +6,19 @@
 <p><%="#{@listing.room_type} in #{@listing.address}"%></p>
 <p><%= "Price $:#{@listing.price}" %></p>
 <p><%= @listing.summary %></p>
+<p><%= "Host Name :#{@listing.user.fullname}" %>
 
 
-<%= link_to 'Home', listings_path %>
+<%@listing.tags.each do |t|%>
+<button type="button" class="btn btn-default">
+<%=link_to "#{t.amenity}", tag_path(t.id)%>
+</button>
+<%end%>
 
-<%= link_to 'List Your Place', new_listing_path %>
 
-<%= link_to 'Update Listing', edit_listing_path %>
-
-<%= link_to 'Remove Listing', listing_path(@listing), data: {:confirm => "Are you sure?"}, :method => :delete %>
+<div class="container">
+  <%= link_to 'Home', listings_path %>
+  <%= link_to 'List Your Place', new_listing_path %>
+  <%= link_to 'Update Listing', edit_listing_path %>
+  <%= link_to 'Remove Listing', listing_path(@listing), data: {:confirm => "Are you sure?"}, :method => :delete %>
+</div>

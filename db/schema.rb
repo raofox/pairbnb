@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427084723) do
+ActiveRecord::Schema.define(version: 20170428090120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20170427084723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
+
+  create_table "listing_tags", force: :cascade do |t|
+    t.integer "listing_id"
+    t.integer "tag_id"
+    t.index ["listing_id"], name: "index_listing_tags_on_listing_id", using: :btree
+    t.index ["tag_id"], name: "index_listing_tags_on_tag_id", using: :btree
   end
 
   create_table "listings", force: :cascade do |t|
@@ -39,6 +46,12 @@ ActiveRecord::Schema.define(version: 20170427084723) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["user_id"], name: "index_listings_on_user_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "amenity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

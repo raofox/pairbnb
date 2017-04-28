@@ -11,7 +11,6 @@ class CreateListings < ActiveRecord::Migration[5.0]
       t.string :address
       t.integer :price
       t.references :user
-
       t.timestamps
     end
   end
