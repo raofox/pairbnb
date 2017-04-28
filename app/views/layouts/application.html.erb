@@ -6,10 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
+    <div class="container">
     <nav class="navbar navbar-default">
+
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -23,10 +26,16 @@
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
           Signed in as: <%= current_user.email %>
+          <button class="btn btn-default" type="submit">
           <%= button_to 'Sign out', sign_out_path, method: :delete, class: "btn btn-primary" %>
+         </button>
         <% else %>
+        <button class="btn btn-default" type="submit">
           <%= link_to 'Sign in', sign_in_path %>
+        </button>
+        <button class="btn btn-default" type="submit">
           <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+        </button>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -41,5 +50,7 @@
     </div>
 
     <%= yield %>
+
+    </div>
   </body>
 </html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427050403) do
+ActiveRecord::Schema.define(version: 20170427084723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20170427050403) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.integer  "property_type"
+    t.integer  "room_type"
+    t.integer  "guest"
+    t.integer  "bedroom"
+    t.integer  "bathroom"
+    t.string   "title"
+    t.string   "summary"
+    t.string   "address"
+    t.integer  "price"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_listings_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

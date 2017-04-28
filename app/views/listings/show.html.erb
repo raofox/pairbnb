@@ -1,0 +1,17 @@
+<h1><%="#{@listing.title} in #{@listing.address}"%></h1>
+
+<div class="center-block">
+    <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/IM20JJF5IY.jpg" alt="Pretty House" height=300px, width=300px>
+</div>
+<p><%="#{@listing.room_type} in #{@listing.address}"%></p>
+<p><%= "Price $:#{@listing.price}" %></p>
+<p><%= @listing.summary %></p>
+
+
+<%= link_to 'Home', listings_path %>
+
+<%= link_to 'List Your Place', new_listing_path %>
+
+<%= link_to 'Update Listing', edit_listing_path %>
+
+<%= link_to 'Remove Listing', listing_path(@listing), data: {:confirm => "Are you sure?"}, :method => :delete %>

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   enum gender: [:undefined, :male, :female]
 
   has_many :authentications, :dependent => :destroy
+  has_many :listings, :dependent => :destroy
+
 
   def password_optional?
 	    true
@@ -19,7 +21,7 @@ class User < ApplicationRecord
       u.password = SecureRandom.hex(7)
     end
   end
-  
+
 
   def fb_token
     x = self.authentications.where(:provider => :facebook).first

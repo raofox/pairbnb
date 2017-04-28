@@ -1,0 +1,16 @@
+<h1> Places </h1>
+
+<%  @listing.each do |listing| %>
+<h3> <%= link_to "#{listing.title}", listing_path(listing.id) %>  </h3>
+<h4> <%=listing.summary%> </h4>
+<ul>
+  <li> <%=listing.bedroom%> </li>
+  <li> <%=listing.bathroom%> </li>
+  <li> <%=listing.room_type%> </li>
+  <li> <%=listing.property_type%> </li>
+  <li> <%=listing.guest%> </li>
+  <li> <%=listing.address%> </li>
+  <li> <%=listing.price%> </li>
+</ul>
+<%= link_to 'List Your Place', new_listing_path %>
+<% end %>
