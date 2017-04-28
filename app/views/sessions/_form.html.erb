@@ -1,22 +1,49 @@
-<%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+
+<div class="container">
+
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign In</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign In</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for :session, url: session_path do |form| %>
+            <div class="text-field">
+              <%= form.label :email %>
+              <%= form.text_field :email, type: 'email' %>
+            </div>
+
+            <div class="password-field">
+              <%= form.label :password %>
+              <%= form.password_field :password %>
+            </div>
+
+            <div class="submit-field">
+              <%= form.submit %>
+            </div>
+
+            <div class="other-links">
+              <% if Clearance.configuration.allow_sign_up? %>
+                <%= link_to t(".sign_up"), sign_up_path %>
+              <% end %>
+              <%= link_to t(".forgot_password"), new_password_path %>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
-
-  <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
-  </div>
-<% end %>
+</div>
