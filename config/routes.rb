@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   # Listings routes
   resources :listings
+  resources :tags
 
 
   # Clearance routes

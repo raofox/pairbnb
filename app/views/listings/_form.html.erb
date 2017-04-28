@@ -28,6 +28,9 @@
   <div id="room-form">
     Room Type: <%= select_tag 'listing[room_type]', options_for_select([["shared_room", :shared_room], ["private_room", :private_room], ["entire_place", :entire_place]]) %>
   </div>
+  <div id="checkbox">
+    <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :amenity %>
+  </div>
   <div class="submit-field">
     <%= form.submit class: 'btn btn-success'%>
   </div>
