@@ -5,7 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+# Use Minimagick
+gem "mini_magick"
+# Use carrierwave
+gem 'carrierwave', '~> 1.0'
 # Use omniauth
 gem "omniauth"
 # USe omniauth-facebook

@@ -19,18 +19,19 @@ class ListingsController < ApplicationController
   end
 
   def new
-    # authorization code
-    user = User.find(current_user.id)
-    if user.customer?
-      flash[:notice] = "Sorry. You are not allowed to perform this action."
-      return redirect_to listings_path, notice: "Sorry. You do not have the permission to verify a property."
-    end
+    # # authorization code
+    # user = User.find(current_user.id)
+    # if user.customer?
+    #   flash[:notice] = "Sorry. You are not allowed to perform this action."
+    #   return redirect_to listings_path, notice: "Sorry. You do not have the permission to verify a property."
+    # end
     @listing = Listing.new
   end
 
   def create
     @listing = current_user.listings.new(listing_params)
     # @listing.user_id = current_user.id
+  
     if @listing.save
         redirect_to @listing
     else
@@ -57,7 +58,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-      params.require(:listing).permit(:room_type, :property_type, :guest, :bedroom, :bathroom, :title, :summary, :address, :price, { :tag_ids => [] })
+      params.require(:listing).permit(:room_type, :property_type, :guest, :bedroom, :bathroom, :title, :summary, :address, :price, { :tag_ids => []}, { :photos => []})
   end
 
 end
