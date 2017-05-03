@@ -2,6 +2,8 @@ class User < ApplicationRecord
   include Clearance::User
 
   enum gender: [:undefined, :male, :female]
+  # enum role: {"superadmin"=>0, "moderator"=>1, "customer"=>2}
+  enum role: [:superadmin, :moderator, :customer]
 
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy

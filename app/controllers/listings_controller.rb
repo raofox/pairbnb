@@ -19,6 +19,12 @@ class ListingsController < ApplicationController
   end
 
   def new
+    # authorization code
+    user = User.find(current_user.id)
+    if user.customer?
+      flash[:notice] = "Sorry. You are not allowed to perform this action."
+      return redirect_to listings_path, notice: "Sorry. You do not have the permission to verify a property."
+    end
     @listing = Listing.new
   end
 
