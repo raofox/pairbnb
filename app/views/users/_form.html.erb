@@ -24,6 +24,10 @@
   <%= form.label :Birthdate %>
   <%= date_field(:user, :birthdate) %>
 </div>
+<div id="photo-upload">
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar, multiple: true %><br />
+</div>
 
 <div class="submit-field">
   <%= form.submit class: 'btn btn-success'%>

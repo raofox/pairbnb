@@ -31,6 +31,10 @@
   <div id="checkbox">
     <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :amenity %>
   </div>
+  <div id="photo-upload">
+    <%= f.label :photos %>
+    <%= f.file_field :photos, multiple: true %><br />
+  </div>
   <div class="submit-field">
     <%= form.submit class: 'btn btn-success'%>
   </div>
