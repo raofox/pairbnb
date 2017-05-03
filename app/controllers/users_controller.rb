@@ -1,9 +1,9 @@
 class UsersController < Clearance::UsersController
 
 
-  private
+private
   def user_params
-    params.require(:user).permit(:fullname, :email, :password, :gender, :birthdate, { avatar: => [] })
+    params.require(:user).permit(:fullname, :email, :password, :gender, :birthdate, :avatar)
   end
 
 end
