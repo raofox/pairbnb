@@ -12,7 +12,7 @@
 
   <div class="carousel-inner">
     <div class="item active">
-      <%= image_tag @listing.photos.first, class: "img-response" %>
+    <%= image_tag @listing.photos.first, class: "img-response" %>
     </div>
       <% @listing.photos.shift %>
       <% @listing.photos.each do |photo| %>
@@ -21,8 +21,6 @@
       </div>
       <% end %>
   </div>
-
-
 
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -34,7 +32,6 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
 
 <p><%="#{@listing.room_type} in #{@listing.address}"%></p>
 <p><%= "Price $:#{@listing.price}" %></p>
@@ -48,10 +45,49 @@
 </button>
 <%end%>
 
-
 <div class="container">
   <%= link_to 'Home', listings_path %>
   <%= link_to 'List Your Place', new_listing_path %>
-  <%= link_to 'Update Listing', edit_listing_path %>
+  <%= link_to 'Update Listing', edit_listing_path(@listing) %>
   <%= link_to 'Remove Listing', listing_path(@listing), data: {:confirm => "Are you sure?"}, :method => :delete %>
+</div>
+
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Reserve</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Your Reservation Dates</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for [@listing, @reservation] do |form| %>
+
+
+
+        <div class="start_date-field">
+          <%= form.label :start_date %>
+          <%= form.date_field :start_date %><br />
+        </div>
+        <div class="end_date-field">
+          <%= form.label :end_date %>
+          <%= form.date_field :end_date %><br />
+        </div>
+        <div class="submit-field">
+          <%= form.submit %>
+        </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>

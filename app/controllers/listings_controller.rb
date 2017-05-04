@@ -16,6 +16,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @reservation = @listing.reservations.new
   end
 
   def new
@@ -30,8 +31,8 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.new(listing_params)
+   
     # @listing.user_id = current_user.id
-    byebug
     if @listing.save
         redirect_to @listing
     else
