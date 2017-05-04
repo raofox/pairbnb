@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   end
 
   # Listings routes
-  resources :listings
+  resources :listings do
+    resources :reservations, only: [:show, :create, :destroy]
+  end
+
   resources :tags
+
 
 
   # Clearance routes
