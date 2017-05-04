@@ -31,9 +31,8 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.new(listing_params)
-    byebug
+   
     # @listing.user_id = current_user.id
-
     if @listing.save
         redirect_to @listing
     else
