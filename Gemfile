@@ -46,6 +46,9 @@ gem 'jbuilder', '~> 2.5'
 # Use braintree for payment
 gem 'braintree'
 
+#Use sidekiq for background jobs
+gem 'sidekiq'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

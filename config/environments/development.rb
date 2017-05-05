@@ -52,6 +52,18 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Configure the mailer to create full URLs in emails:clearance 
+  # Configure the mailer to create full URLs in emails:clearance
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    domain:               'localhost:3000',
+    user_name:            ENV["mailer_user_name"],
+    password:             ENV["mailer_password"],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
 end

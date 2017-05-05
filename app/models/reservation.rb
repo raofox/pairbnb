@@ -20,8 +20,8 @@ class Reservation < ApplicationRecord
 
 
   def total_price
-    price = listing.price
-    days = (start_date..end_date).to_a.length
+    price = self.listing.price
+    days = (self.start_date..self.end_date).to_a.length
    return  price * days
   end
 

@@ -7,8 +7,8 @@ class ReservationsController < ApplicationController
     if @reservation.save
       flash[:success] = @reservation.errors.full_messages.join
       redirect_to listing_reservation_path(@reservation, listing_id: @listing.id)
+      ReservationMailer.reservation_email(@reservation).deliver_now
     else
-
       flash[:danger] = @reservation.errors.full_messages.join
       render "listings/show"
     end
@@ -22,6 +22,8 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
   end
 
+
+  private
   def reservation_params
     params.require(:reservation).permit(:start_date, :end_date)
   end
