@@ -1,5 +1,6 @@
 <h1><%="#{@listing.title} in #{@listing.address}"%></h1>
 
+<% if @listing.photos.present? %>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -20,6 +21,7 @@
         <%= image_tag photo, class: "img-response" %>
       </div>
       <% end %>
+
   </div>
 
   <!-- Left and right controls -->
@@ -32,6 +34,10 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+<% else %>
+<%= image_tag 'default.png' %>
+<% end %>
 
 <p><%="#{@listing.room_type} in #{@listing.address}"%></p>
 <p><%= "Price $:#{@listing.price}" %></p>
