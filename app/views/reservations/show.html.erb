@@ -1,0 +1,8 @@
+<h4> Congratulations in succesfully reserving your vacation days @ <%= @reservation.listing.title %> </h4>
+
+<p> Your accomodation address is : <%= @reservation.listing.address %> </p>
+<p> You have reserved this place from <%= @reservation.start_date.to_formatted_s(:long) %> to <%= @reservation.end_date.to_formatted_s(:long) %>
+<p> The total ammount due is : $ <%= @reservation.total_price %> </p>
+
+<p> Make payment to confirm your reservation </p>
+<%= link_to "Make Payment", braintree_new_path %>
