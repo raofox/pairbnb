@@ -49,6 +49,9 @@ gem 'braintree'
 #Use sidekiq for background jobs
 gem 'sidekiq'
 
+#Use rails-12factor
+gem 'rails_12factor'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

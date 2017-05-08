@@ -3,7 +3,7 @@ class ReservationJob < ApplicationJob
 
   def perform(email)
     # Do something later
-    byebug
+    
     ReservationMailer.reservation_email(email).deliver_later
   end
 end
