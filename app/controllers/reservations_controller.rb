@@ -7,7 +7,8 @@ class ReservationsController < ApplicationController
     if @reservation.save
       flash[:success] = @reservation.errors.full_messages.join
       redirect_to listing_reservation_path(@reservation, listing_id: @listing.id)
-      ReservationMailer.reservation_email(@reservation).deliver_now
+      ReservationJob.perform_later(@reservation)
+      # ReservationMailer.reservation_email(@reservation).deliver_later
     else
       flash[:danger] = @reservation.errors.full_messages.join
       render "listings/show"
