@@ -1,5 +1,7 @@
 <h1> Places </h1>
 
+
+
 <%  @listing.each do |listing| %>
 <h3> <%= link_to "#{listing.title}", listing_path(listing.id) %>  </h3>
 <h4> <%=listing.summary%> </h4>

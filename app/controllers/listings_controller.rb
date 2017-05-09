@@ -11,7 +11,12 @@ class ListingsController < ApplicationController
 
 
   def index
-    @listing = Listing.all
+    if params[:min].present? || params[:max].present? || params[:location].present? || params[:bedroom].present? || params[:bathroom].present?
+      
+      @listing = Listing.min_max_price(params[:min],params[:max]).address(params[:location]).bedroom(params[:bedroom]).bathroom(params[:bathroom])
+    else
+      @listing = Listing.all
+    end
   end
 
   def show
@@ -31,7 +36,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.new(listing_params)
-   
+
     # @listing.user_id = current_user.id
     if @listing.save
         redirect_to @listing
@@ -56,6 +61,13 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
+
+  # def search
+  #   Listing.min_max_price(params[:min],params[:max])
+  #   Listing.address(params[:location])
+  #   Listing.bedroom(params[:num_of_bedroom])
+  #   Listing.bathroom(params[:num_of_bathroom])
+  # end
 
   private
   def listing_params
