@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :tags
 
+  # get "/search" => "listings#search"
+
 
   # Clearance routes
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

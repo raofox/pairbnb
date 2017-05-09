@@ -14,7 +14,10 @@ class Listing < ApplicationRecord
   # serialize :photos, JSON
 
 
-
+  scope :min_max_price, -> (min,max) { where('price > ? AND price < ?', min, max) }
+  scope :address, -> (location) { where address: location }
+  scope :bedroom, -> (num_of_bedroom) { where bedroom: num_of_bedroom }
+  scope :bathroom, -> (num_of_bathroom) { where bathroom: num_of_bathroom }
 
 
 end
